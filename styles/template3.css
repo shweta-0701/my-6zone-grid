@@ -1,0 +1,206 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
+    color: #000;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.dynamic-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: white;
+    width: 33.346vw !important;
+    /* height: 100vh; */
+}
+
+.menu-title-name span {
+    padding: 2px 15px 0 0;
+    border-radius: 5px;
+    /* margin-bottom: 10px; */
+    z-index: 1;
+    letter-spacing: 1.2px;
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); */
+}
+
+.product-list {
+    line-height: 5px;
+    letter-spacing: 1px;
+}
+
+/* .description {
+    border-bottom: 1px solid rgb(78, 74, 74);
+} */
+
+.description.category-1 {
+    display: none !important;
+}
+
+
+.description td {
+    padding: 3px 0px 6px 0px;
+}
+
+table tbody .category-nonveg td {
+    padding: 8px 0;
+}
+
+/* .product-menuItem-name td+td {
+    text-align: center;
+} */
+
+.product-menuItem-name td:first-child,
+.foodItem td:first-child {
+    text-align: left !important;
+}
+
+.product-menuItem-name td:not(:first-child),
+.foodItem td:not(:first-child) {
+    text-align: center !important;
+}
+
+table tbody tr td {
+    padding: 8px 0 0 0;
+}
+
+.category-veg td span,
+.category-nonveg td span {
+    padding: 2px 10px;
+    border-radius: 5px;
+}
+
+.slick-sliders {
+    z-index: 10000 !important;
+}
+
+.slick-sliders div {
+    overflow: hidden;
+}
+
+.sold-out {
+    text-decoration-line: line-through;
+    color: red;
+}
+
+/* .product-menuItem-name {
+    border-bottom: 1px solid black;
+} */
+
+.product-menuItem-name .category-veg {
+    border-bottom: none !important;
+    border-radius: 5px;
+    /* Ensure no border is applied when category-veg is present */
+}
+
+.preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    /* background-color: #D69ADE !important; */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left: 8px solid #333;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* .dynamic-section {
+    position: relative;
+    min-height: 200px;
+  } */
+
+/* .dynamic-section .content-loaded {
+    display: none;
+  } */
+
+.menu-section img {
+    display: none;
+    /* Image is hidden by default */
+}
+
+.menu-section img.show-image {
+    display: inline-block;
+    /* Show the image if the class is applied */
+}
+
+.swiper-container {
+    z-index: 9999 !important;
+}
+
+#disclaimer {
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+.dynamic-section .menu-section:first-child div {
+    padding-bottom: 0px !important;
+}
+
+.dynamic-section .menu-section:nth-child(2) div {
+    padding-bottom: 0px !important;
+}
+
+.dynamic-section .menu-section:nth-child(3) div {
+    padding-bottom: 0px !important;
+}
+
+
+/* -------------------- */
+
+
+.spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left: 8px solid #333;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
