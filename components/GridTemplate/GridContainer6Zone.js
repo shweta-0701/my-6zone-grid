@@ -30,37 +30,60 @@ export default function GridContainer6Zone({ data }) {
   return (
     <>
       <div className="DSA-Template">
-        <div className="grid-row">
-          {[0, 1, 2].map((index) => (
-            <div key={index} className="grid-column">
-              <DynamicSection
-                key={ZONE_CONFIG[index].id}
-                sectionId={ZONE_CONFIG[index].id}
-                zone={getZoneByNumber(
-                  data.zone_data,
-                  ZONE_CONFIG[index].zoneNo
-                )}
-                zoneData={data.zone_data}
-                dataIdx={ZONE_CONFIG[index].dataIdx}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="grid-row">
-          {[3, 4, 5].map((index) => (
-            <div key={index} className="grid-column">
-              <DynamicSection
-                key={ZONE_CONFIG[index].id}
-                sectionId={ZONE_CONFIG[index].id}
-                zone={getZoneByNumber(
-                  data.zone_data,
-                  ZONE_CONFIG[index].zoneNo
-                )}
-                zoneData={data.zone_data}
-                dataIdx={ZONE_CONFIG[index].dataIdx}
-              />
-            </div>
-          ))}
+        <div className="grid-container">
+          {/* Column 1 - Zones 1 & 4 */}
+          <div className="grid-column">
+            <DynamicSection
+              key={ZONE_CONFIG[0].id}
+              sectionId={ZONE_CONFIG[0].id}
+              zone={getZoneByNumber(data.zone_data, ZONE_CONFIG[0].zoneNo)}
+              zoneData={data.zone_data}
+              dataIdx={ZONE_CONFIG[0].dataIdx}
+            />
+            <DynamicSection
+              key={ZONE_CONFIG[1].id}
+              sectionId={ZONE_CONFIG[1].id}
+              zone={getZoneByNumber(data.zone_data, ZONE_CONFIG[1].zoneNo)}
+              zoneData={data.zone_data}
+              dataIdx={ZONE_CONFIG[1].dataIdx}
+            />
+          </div>
+
+          {/* Column 2 - Zones 2 & 5 */}
+          <div className="grid-column">
+            <DynamicSection
+              key={ZONE_CONFIG[2].id}
+              sectionId={ZONE_CONFIG[2].id}
+              zone={getZoneByNumber(data.zone_data, ZONE_CONFIG[2].zoneNo)}
+              zoneData={data.zone_data}
+              dataIdx={ZONE_CONFIG[2].dataIdx}
+            />
+            <DynamicSection
+              key={ZONE_CONFIG[3].id}
+              sectionId={ZONE_CONFIG[3].id}
+              zone={getZoneByNumber(data.zone_data, ZONE_CONFIG[3].zoneNo)}
+              zoneData={data.zone_data}
+              dataIdx={ZONE_CONFIG[3].dataIdx}
+            />
+          </div>
+
+          {/* Column 3 - Zones 3 & 6 */}
+          <div className="grid-column">
+            <DynamicSection
+              key={ZONE_CONFIG[4].id}
+              sectionId={ZONE_CONFIG[4].id}
+              zone={getZoneByNumber(data.zone_data, ZONE_CONFIG[4].zoneNo)}
+              zoneData={data.zone_data}
+              dataIdx={ZONE_CONFIG[4].dataIdx}
+            />
+            <DynamicSection
+              key={ZONE_CONFIG[5].id}
+              sectionId={ZONE_CONFIG[5].id}
+              zone={getZoneByNumber(data.zone_data, ZONE_CONFIG[5].zoneNo)}
+              zoneData={data.zone_data}
+              dataIdx={ZONE_CONFIG[5].dataIdx}
+            />
+          </div>
         </div>
       </div>
       <DisclaimerSection disclaimer={data.disclaimer} />

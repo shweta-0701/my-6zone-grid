@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
 export default function MenuSection({ sections }) {
   return (
@@ -25,32 +25,38 @@ export default function MenuSection({ sections }) {
 
 function renderMenuHeader(header) {
   if (!header.title_content) return null;
-  
+
   const headerStyles = {
     fontSize: header.title_font_size,
     color: header.title_font_color,
     fontFamily: header.title_font_family,
     fontWeight: header.title_font_weight,
-    textTransform: 'uppercase'
+    textTransform: "uppercase",
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    justifyContent: "start",
   };
 
   return (
-    <div 
-      className="menu-title-name ms-1 d-flex align-items-center" 
+    <div
+      className="menu-title-name ms-1 d-flex align-items-center"
       style={{
-        display: header.title_content ? 'block' : 'none',
-        marginBottom: '-4px',
-        borderBottom: '1px solid gray'
+        display: header.title_content ? "block" : "none",
+        marginBottom: "-4px",
+        borderBottom: "1px solid gray",
       }}
     >
       <span className="menuTitle" style={headerStyles}>
         {header.title_content}
         {header.title_icon_image && (
-          <Image 
-            src={header.title_icon_image} 
+          <Image
+            src={header.title_icon_image}
+            width={parseInt(header.title_icon_width) || 50}
+            height={parseInt(header.title_icon_height) || 50}
             style={{
               height: header.title_icon_height,
-              width: header.title_icon_width
+              width: header.title_icon_width,
             }}
             className="show-image"
             alt="Menu icon"
@@ -64,34 +70,34 @@ function renderMenuHeader(header) {
 function renderMenuColumns(columnDetails) {
   const cols = columnDetails.colum_title_data;
   const hasColumns = Object.values(cols).some(Boolean);
-  
+
   if (!hasColumns) return null;
-  
+
   return (
-    <thead 
-      className="MenuItemDesc w-100" 
-      style={{ 
-        display: hasColumns ? 'table-header-group' : 'none' 
+    <thead
+      className="MenuItemDesc w-100"
+      style={{
+        display: hasColumns ? "table-header-group" : "none",
       }}
     >
-      <tr 
-        className="foodItem w-100" 
+      <tr
+        className="foodItem w-100"
         style={{
           backgroundColor: columnDetails.column_title_background,
           fontFamily: columnDetails.column_title_font_family,
-          fontWeight: columnDetails.column_title_font_weight
+          fontWeight: columnDetails.column_title_font_weight,
         }}
       >
         {Object.values(cols).map((col, index) => (
-          <td 
+          <td
             key={index}
             className={index === 0 ? "ps-2" : "ps-0 text-center"}
             style={{
               fontSize: columnDetails.column_title_font_size,
-              color: columnDetails.column_title_color
+              color: columnDetails.column_title_color,
             }}
           >
-            {col || ''}
+            {col || ""}
           </td>
         ))}
       </tr>
@@ -108,48 +114,51 @@ function renderMenuItems(menus) {
         const isSoldOut = item.item_sold === 1;
         const isVeg = item.item_category === 1;
         const hasDesc = item.item_description?.trim();
-        
+
         // Fix: Create proper style object instead of string
         const rowStyle = {
-          position: 'relative',
-          borderBottom: (!hasDesc && !isVeg) ? '0px solid black' : 'none'
+          position: "relative",
+          borderBottom: !hasDesc && !isVeg ? "0px solid black" : "none",
+          
         };
 
         return (
           <React.Fragment key={index}>
-            <tr 
-              className={`product-menuItem-name ${isSoldOut ? 'sold-out' : ''}`}
+            <tr
+              className={`product-menuItem-name ${isSoldOut ? "sold-out" : ""}`}
               style={rowStyle}
             >
-              <td 
-                className="ps-1 pb-2" 
-                style={menuItemStyles(menus.menu_item_css)}
+              <td
+                className="ps-1 pb-2"
+                style={{ ...menuItemStyles(menus.menu_item_css), paddingBottom: "8px" }}
               >
-                {isVeg ? renderVegCategory(item, menus.category) : item.column_1}
+                {isVeg
+                  ? renderVegCategory(item, menus.category)
+                  : item.column_1}
                 {isSoldOut && (
-                  <span 
-                    className="sold" 
+                  <span
+                    className="sold"
                     style={soldOutStyles(menus.menu_item_css)}
                   >
                     {menus.menu_item_css.sold_out_title}
                   </span>
                 )}
               </td>
-              {['column_2', 'column_3', 'column_4'].map((col, colIndex) => (
-                <td 
+              {["column_2", "column_3", "column_4"].map((col, colIndex) => (
+                <td
                   key={colIndex}
-                  className="pb-2" 
-                  style={menuItemStyles(menus.menu_item_css)}
+                  className="pb-2 text-center"
+                  style={{ ...menuItemStyles(menus.menu_item_css), paddingBottom: "8px" }}
                 >
-                  {item[col] || ''}
+                  {item[col] || ""}
                 </td>
               ))}
             </tr>
             {hasDesc && (
               <tr className="description category-0">
-                <td 
-                  colSpan="4" 
-                  className="ps-1 pb-2" 
+                <td
+                  colSpan="4"
+                  className="ps-1 pb-2"
                   style={menuDescStyles(menus.menu_item_css)}
                 >
                   {item.item_description}
@@ -180,11 +189,11 @@ function soldOutStyles(css) {
     fontFamily: css.sold_font_family,
     fontSize: css.sold_font_size,
     fontWeight: css.sold_font_weight,
-    padding: '0.8% 1%',
-    position: 'absolute',
-    marginLeft: '5px',
-    marginTop: '-3px',
-    borderRadius: '5px',
+    padding: "0.8% 1%",
+    position: "absolute",
+    marginLeft: "5px",
+    marginTop: "-3px",
+    borderRadius: "5px",
   };
 }
 
@@ -200,19 +209,20 @@ function menuDescStyles(css) {
 
 function renderVegCategory(item, categoryCss) {
   return (
-    <h3 
-      className="category-veg mb-0 mt-2" 
+    <h3
+      className="category-veg mb-0 mt-2"
       style={{
-        display: 'inline-block',
+        display: "inline-block",
         backgroundColor: categoryCss.category_background,
         fontFamily: categoryCss.category_font_family,
         fontSize: categoryCss.category_font_size,
         fontWeight: categoryCss.category_font_weight,
         color: categoryCss.category_title_color,
         lineHeight: categoryCss.category_font_line_height,
-        textTransform: 'uppercase',
-        padding: '10px 15px',
-        borderBottom: '1px solid #333'
+        textTransform: "uppercase",
+        padding: "10px 15px !important",
+        borderBottom: "1px solid #333",
+        borderRadius: "5px",
       }}
     >
       {item.column_1}
