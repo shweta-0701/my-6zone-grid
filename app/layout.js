@@ -8,6 +8,11 @@ import {
   Merriweather,
 } from "next/font/google";
 
+import "@/styles/grid.css";
+
+// Add global styles
+import "./globals.css";
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
   subsets: ["latin"],
@@ -50,6 +55,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`${inter.variable} ${poppins.variable} ${roboto.variable} ${lato.variable} ${montserrat.variable} ${oswald.variable} ${merriweather.variable}`}
+        style={{ margin: 0, padding: 0 }}
       >
         {children}
       </body>

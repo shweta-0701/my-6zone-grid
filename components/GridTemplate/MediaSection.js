@@ -9,13 +9,13 @@ export default function MediaSection({ src, type }) {
 
   const containerStyle = {
     width: '100%',
-    height: '50vh',
+    height: 'auto',
     position: 'relative'
   };
 
   const mediaStyle = {
     width: '100%',
-    height: '50vh',
+    height: 'auto',
     position: 'relative',
     display: isLoading ? 'none' : 'block'
   };

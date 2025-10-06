@@ -1,14 +1,23 @@
-'use client';
+import GridContainer6Zone from "@/components/GridTemplate/GridContainer6Zone";
 
-import { useState } from 'react';
-import GridContainer6Zone from '@/components/GridTemplate/GridContainer6Zone';
-
-export default function HomePage() {
-  const [layoutId, setLayoutId] = useState('185'); // Default layout ID
+// This is a server component by default
+export default async function HomePage() {
+  const layoutId = "185"; // Default layout ID
+  const res = await fetch(
+    `https://signage.lotusdm.com/api/gridtemplateapi/${layoutId}`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
+    // You can render an error UI here
+    return <div>Error loading data</div>;
+  }
+  const data = await res.json();
 
   return (
     <div>
-      <GridContainer6Zone layoutId={layoutId} />
+      <GridContainer6Zone data={data} />
     </div>
   );
 }

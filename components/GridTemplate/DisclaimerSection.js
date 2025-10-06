@@ -28,9 +28,9 @@ export default function DisclaimerSection({ disclaimer }) {
     <div
       ref={disclaimerRef}
       id="disclaimer"
-      className="slick-sliders position-fixed w-100"
+      className="slick-sliders position-fixed w-full bottom-0"
     >
-      <marquee scrollAmount="2" behavior="scroll" direction="left">
+      <marquee scrollamount="2" behavior="scroll" direction="left">
         {disclaimer.disclaimer_text_one}
       </marquee>
     </div>
