@@ -53,8 +53,8 @@ const merriweather = Merriweather({
 });
 
 export const metadata = {
-  title: "My App",
-  description: "App description",
+  title: "6-Zone Grid Layout",
+  description: "A versatile 6-zone grid layout for showcasing diverse content.  ",
 };
 
 export default function RootLayout({ children }) {
